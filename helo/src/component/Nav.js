@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import {user} from './../redux/reducer'
 
-function Nav(props) {
-    console.log(props)
+
+export default function Nav(props) {
     return(
         <div>
             <Link to='/dashboard'>
@@ -16,18 +14,8 @@ function Nav(props) {
             <Link to='/'>
                 <button>Logout</button>
             </Link>
-            <h4>{props.username}</h4>
         </div>
     )
 }
-
-// function mapStateToProps( state ) {
-//     return {
-//     username : state.username,
-//     profile_picture: state.profile_picture  
-//     } 
-// }
-
-export default connect(null, {user})(Nav);
 
 // PART 1 - STEP 4

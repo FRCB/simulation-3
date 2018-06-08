@@ -12,6 +12,7 @@ export default class Dashboard extends Component {
             searchInput: ''
         }
         this.getAllPosts = this.getAllPosts.bind(this)
+        this.deletePost = this.deletePost.bind(this)
     }
 
     componentDidMount() {
@@ -39,6 +40,7 @@ export default class Dashboard extends Component {
                 <div key={i}>
                     <Post
                         post = { post }
+                        deletePost = {this.deletePost}
                     />
                 </div>
             )
