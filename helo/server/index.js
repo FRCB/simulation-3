@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express')
     , bodyParser = require('body-parser')
-    // , session = require('express-session')
+    , session = require('express-session')
     , massive = require('massive')
     , controller = require('./controller')
 
@@ -15,14 +15,14 @@ massive(process.env.CONNECTION_STRING).then(dbInstance => app.set('db', dbInstan
 // first step - set BodyParder
 app.use(bodyParser.json())
 // app.use(cors());
-// app.use(express.static(__dirname + './../build'))
+app.use(express.static(__dirname + './../build'))
 
 // Setup session here
-// app.use(session({
-//     secret: SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: true
-// }));
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
 
 //Setup middleware here
 //no need here

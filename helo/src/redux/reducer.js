@@ -23,4 +23,3 @@ export function user( id, username, profile_picture ) {
     }
 }
 
-
