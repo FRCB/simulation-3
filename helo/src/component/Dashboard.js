@@ -9,14 +9,16 @@ export default class Dashboard extends Component {
 
         this.state = {
             posts: [],
-            searchInput: ''
+            searchInput:''
         }
+
         this.getAllPosts = this.getAllPosts.bind(this)
         this.deletePost = this.deletePost.bind(this)
+        this.searchBtn = this.searchBtn.bind(this)
     }
 
     componentDidMount() {
-        this.getAllPosts() 
+        this.getAllPosts();
     }
 
     getAllPosts() {
@@ -25,13 +27,19 @@ export default class Dashboard extends Component {
         })
     }
 
+    searchBtn(id) {
+        axios.get( `/api/posts/:username?post${id}` ).then(
+            res => res.data )
+        }
+    
+
     deletePost(id) {
         axios.delete(`/api/posts/${id}`)
         .then(this.getAllPosts())
     }
 
     updateSearchInput(val) {
-        this.setState({username: val});
+        this.setState({searchInput: val});
     }
 
     render() {        
@@ -41,6 +49,11 @@ export default class Dashboard extends Component {
                     <Post
                         post = { post }
                         deletePost = {this.deletePost}
+                        toggleBtn = {this.toggleBtn}
+                        titleEdit = {this.titleEdit} 
+                        usernameEdit = {this.usernameEdit} 
+                        contentEdit = {this.contentEdit}
+                        getAllPosts = {this.getAllPosts}
                     />
                 </div>
             )
@@ -54,11 +67,16 @@ export default class Dashboard extends Component {
                 placeholder='Search'
                 onChange={(e) => this.updateSearchInput(e.target.value)}
                 />
-                <button>Search</button>
+                <button
+                onClick={this.searchBtn}>Search</button>
                 <button>Reset</button>
                 <h4>My Posts</h4>
-                { mappedPosts }
+                    <div>
+                    { mappedPosts }
+                    </div>
+
                 <Link to='/new' >
+                <hr/>
                     <button>
                         Post
                     </button>
@@ -66,4 +84,4 @@ export default class Dashboard extends Component {
             </div>
         )
     }
-}
+    }

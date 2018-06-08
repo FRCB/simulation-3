@@ -1,9 +1,11 @@
 let initialState = {
+    id: '',
     title: '',
     username: '',
-    content: ''
+    content: '',
 }
 
+const UPDATE_ID = "UPDATE_ID";
 const UPDATE_USER = "USER";
 const UPDATE_TITLE = 'UPDATE_TITLE';
 const UPDATE_CONTENT = 'UPDATE_CONTENT';
@@ -11,6 +13,8 @@ const UPDATE_CONTENT = 'UPDATE_CONTENT';
 
 export default function reducer(state = initialState, action) {
     switch(action.type) {
+        case UPDATE_ID:
+            return Object.assign({}, state, { id: action.payload });
         case UPDATE_TITLE:
             return Object.assign({}, state, { title: action.payload });
         case UPDATE_USER:
@@ -19,6 +23,13 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { content: action.payload });
         default:
             return state;
+    }
+}
+
+export function updateID(id) {
+    return {
+        type: UPDATE_ID,
+        payload: id
     }
 }
 

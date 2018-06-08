@@ -24,11 +24,11 @@ module.exports = {
             })
     },
     
-    getAllPosts: (req, res) => {
-        const db = req.app.get('db');
+        getAllPosts: (req, res) => {
+            const db = req.app.get('db');
     
-        db.get_posts()
-        .then(posts => res.status(200).send(posts))        .catch((err) => {
+            db.get_posts()
+            .then(posts => res.status(200).send(posts))    .catch((err) => {
             console.log(err)
             res.status(500).send(err);
             })
@@ -48,9 +48,30 @@ module.exports = {
             const id = req.params.id;
     
             db.delete_post([id])
-                .then(houses => res.status(200).send(houses))
+                .then(posts => res.status(200).send(posts))
                 .catch((err) => res.status(500).send(err))
-        }
-    
+        },
 
-    }
+        editPost: (req, res) => {
+            const db = req.app.get('db');
+            const id = req.params.id;
+            const { title, username, content } = req.body
+    
+            console.log(res.data)
+    
+            db.edit_post([id, title, username, content])
+                .then(posts => res.status(200).send(posts))
+                .catch(() => res.status(500).send())
+        },
+
+        search: (req, res) => {
+        const db = req.app.get('db');
+        const { username } = req.query;
+        const id = req.params.id;
+        const { title, content } = req.body
+
+        db.join_for_search([id, title, username, content])
+                .then(posts => res.status(200).send(posts))
+                .catch(() => res.status(500).send())
+        }
+}
