@@ -1,22 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
+export default function Post(props) {
 
-export default class Post extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-
-        }
-
-    }
-
-    render() {
-
-        return (
-            <div>
-
-            </div>
-        )
-    }
+    return (
+        <div>
+            <p>{props.post.title}</p>
+            <p>{props.post.content}</p>
+            <button>
+                Delete
+            </button>
+            <hr />
+        </div>
+    )
 }

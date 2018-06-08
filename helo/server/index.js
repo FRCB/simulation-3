@@ -30,7 +30,9 @@ app.use(session({
 //ENDPOINTS
 app.post('/api/register', controller.register)
 app.post('/api/login', controller.login)
-// app.get('/api/posts', controller.getAllPosts)
+app.get('/api/posts', controller.getAllPosts)
+app.post('/api/posts', controller.addNewPost)
+app.delete('/api/posts/:id', controller.deletePost)
 
 app.listen(SERVER_PORT, () => {
     console.log(`Listening on port: ${SERVER_PORT}`)

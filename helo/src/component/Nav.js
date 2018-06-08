@@ -17,17 +17,16 @@ function Nav(props) {
                 <button>Logout</button>
             </Link>
             <h4>{props.username}</h4>
-            <img src={props.profile_picture}/>
         </div>
     )
 }
 
-function mapStateToProps( state ) {
-    return {
-    username : state.username,
-    profile_picture: state.profile_picture  
-    } 
-}
+// function mapStateToProps( state ) {
+//     return {
+//     username : state.username,
+//     profile_picture: state.profile_picture  
+//     } 
+// }
 
 export default connect(null, {user})(Nav);
 

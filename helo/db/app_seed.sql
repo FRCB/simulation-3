@@ -11,5 +11,5 @@ CREATE TABLE posts
 id SERIAL PRIMARY KEY,
 title TEXT,
 username TEXT, 
-profile_picture TEXT
+content TEXT
 )
