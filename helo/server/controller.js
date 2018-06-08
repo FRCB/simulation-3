@@ -39,8 +39,8 @@ module.exports = {
             const { title, username, content } = req.body
             
             db.add_new_post([title, username, content])
-                .then(posts => res.status(200).send(posts))
-                .catch((err) => console.log(err))
+            .then(posts => res.status(200).send(posts))
+            .catch((err) => console.log(err))
         },
 
         deletePost: (req, res) => {

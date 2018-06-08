@@ -40,7 +40,7 @@ class Form extends Component {
                 <input
                     type="text"
                     placeholder='Content'
-                    onChange={(e) => this.props.updateTitle(e.target.value)} />
+                    onChange={(e) => this.props.updateContent(e.target.value)} />
                 <br />
                 <hr />
                 <Link to="/dashboard">
