@@ -22,16 +22,16 @@ export default class Dashboard extends Component {
     }
 
     getAllPosts() {
-        axios.get('/api/posts/').then((res) => {
-            this.setState({ posts: res.data })
+        axios.get('/api/posts/')
+        .then((res) => {this.setState({ posts: res.data })
         })
     }
 
-    searchBtn(id) {
-        axios.get( `/api/posts/:username?post${id}` ).then(
-            res => res.data )
-        }
-    
+    searchBtn(username) {
+        axios.get(`/api/posts/username?username=${username}`)
+        .then((res) => {this.setState({ posts: res.data })
+        })
+    }
 
     deletePost(id) {
         axios.delete(`/api/posts/${id}`)
@@ -42,7 +42,8 @@ export default class Dashboard extends Component {
         this.setState({searchInput: val});
     }
 
-    render() {        
+    render() {    
+
         let mappedPosts = this.state.posts.map((post, i) => {
             return (
                 <div key={i}>
@@ -68,7 +69,7 @@ export default class Dashboard extends Component {
                 onChange={(e) => this.updateSearchInput(e.target.value)}
                 />
                 <button
-                onClick={this.searchBtn}>Search</button>
+                onClick={() => this.searchBtn(this.state.searchInput)}>Search</button>
                 <button>Reset</button>
                 <h4>My Posts</h4>
                     <div>

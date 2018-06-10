@@ -43,7 +43,8 @@ class Auth extends Component {
         let { username, password } = this.state
         let body = { username, password }
         
-        axios.post('http://localhost:3669/api/login', body).then(user => {
+        axios.post('http://localhost:3669/api/login', body)
+        .then(user => {
             if(user.data.length > 0){
                 this.props.history.push('/dashboard')
             }

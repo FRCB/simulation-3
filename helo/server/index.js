@@ -34,7 +34,7 @@ app.get('/api/posts', controller.getAllPosts);
 app.post('/api/posts', controller.addNewPost);
 app.delete('/api/posts/:id', controller.deletePost);
 app.put('/api/posts/:id', controller.editPost);
-app.get('/api/posts/username?post=id', controller.search);
+app.get('/api/posts/username', controller.search);
 
 app.listen(SERVER_PORT, () => {
     console.log(`Listening on port: ${SERVER_PORT}`)

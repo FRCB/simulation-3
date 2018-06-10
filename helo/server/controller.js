@@ -61,17 +61,15 @@ module.exports = {
     
             db.edit_post([id, title, username, content])
                 .then(posts => res.status(200).send(posts))
-                .catch(() => res.status(500).send())
+                .catch((err) => res.status(500).send(err))
         },
 
         search: (req, res) => {
         const db = req.app.get('db');
         const { username } = req.query;
-        const id = req.params.id;
-        const { title, content } = req.body
 
-        db.join_for_search([id, title, username, content])
+        db.join_for_search([ username ])
                 .then(posts => res.status(200).send(posts))
-                .catch(() => res.status(500).send())
+                .catch((err) => res.status(500).send(err))
         }
 }
